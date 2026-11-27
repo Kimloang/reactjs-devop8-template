@@ -27,6 +27,97 @@ function App() {
   const handleLoginCallBack = (value) => {
     setIsValidated(value) // get value from navbar 
   }
+
+
+  // What make reactjs failed in sonarqube 
+  
+  const [users, setUsers] = useState([]);
+  const [name, setName] = useState("");
+
+  // Code smell: unused variable
+  const unusedVariable = "SonarQube Testing";
+
+  // Security hotspot / hardcoded credential
+  const API_KEY = "1234567890_SECRET_API_KEY";
+
+  // Code smell: duplicated logic
+  const calculateTotal = (a, b) => {
+    return a + b;
+  };
+
+  const calculateSum = (x, y) => {
+    return x + y;
+  };
+
+  // High cognitive complexity and nested conditions
+  const validateUser = (user) => {
+    if (user) {
+      if (user.name) {
+        if (user.name.length > 0) {
+          if (user.age) {
+            if (user.age > 18) {
+              if (user.email) {
+                if (user.email.includes("@")) {
+                  return true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return false;
+  };
+
+  // Potentially unsafe DOM manipulation
+  const displayMessage = (message) => {
+    document.getElementById("message").innerHTML = message;
+  };
+
+  const addUser = () => {
+    if (name !== "") {
+      const newUser = {
+        id: users.length + 1,
+        name: name,
+        age: 20,
+        email: name + "@example.com",
+      };
+
+      if (validateUser(newUser)) {
+        setUsers([...users, newUser]);
+        setName("");
+        displayMessage("User added successfully!");
+      } else {
+        displayMessage("Invalid user!");
+      }
+    } else {
+      displayMessage("Name is required!");
+    }
+  };
+
+  // Potential division by zero
+  const divideNumbers = (a, b) => {
+    return a / b;
+  };
+
+  // Unnecessary condition
+  const checkStatus = (status) => {
+    if (status === true) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  // Function with unused parameters
+  const processData = (data, unusedParam) => {
+    return data.map((item) => item * 2);
+  };
+
+
+
+
   return (
 
     // !isLoading && 
