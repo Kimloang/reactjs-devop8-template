@@ -30,7 +30,69 @@ function App() {
 
 
   // What make reactjs failed in sonarqube 
-  
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("admin123");
+  const [users, setUsers] = useState([]);
+
+  // Hardcoded credentials (Security Hotspot / vulnerability)
+  const API_KEY = "1234567890abcdef";
+
+  // Unused variable
+  let unusedVariable = "This variable is never used";
+
+  // Duplicated / unnecessary logic
+  function calculate(a, b) {
+    if (a > 0) {
+      return a + b;
+    } else {
+      return a + b;
+    }
+  }
+
+  // Security issue: eval()
+  function executeCode() {
+    eval("console.log('Dangerous code execution')");
+  }
+
+  // Cognitive complexity and nested conditions
+  function validateUser(user) {
+    if (user) {
+      if (user.name) {
+        if (user.password) {
+          if (user.password.length > 3) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  // Potential bug: always true condition
+  function checkAccess() {
+    if (password != null || password != "") {
+      return true;
+    }
+    return false;
+  }
+
+  // Duplicate code
+  function addUser() {
+    if (name !== "") {
+      setUsers([...users, { name: name, password: password }]);
+    }
+  }
+
+  function addAnotherUser() {
+    if (name !== "") {
+      setUsers([...users, { name: name, password: password }]);
+    }
+  }
+
+  // Hardcoded sensitive information
+  console.log("API KEY:", API_KEY);
+  console.log("Password:", password);
+
 
 
   return (
